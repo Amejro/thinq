@@ -1,0 +1,72 @@
+models:
+  DeliveryMethod:
+    name: string
+    description: string nullable
+    timestamps: true
+    relationships:
+      hasMany: Booking, Order
+
+  Address:
+    address: string
+    city: string nullable
+    state: string nullable
+    country: string
+    zip_code: string nullable
+    user_id: id foreign:users
+    timestamps: true
+    relationships:
+      belongsTo: User
+
+  Booking:
+    booking_code: string
+    user_id: id foreign:users
+    delivery_method_id: id foreign:delivery_methods
+    status: enum:pending,complete,en_route
+    timestamps: true
+    relationships:
+      belongsTo: DeliveryMethod, User
+
+  Order:
+    order_code: string
+    user_id: id foreign:users
+    delivery_method_id: id foreign:delivery_methods
+    status: enum:pending,complete,en_route
+    payment_status: enum:unpaid, patial paid
+    timestamps: true
+    relationships:
+      belongsTo: DeliveryMethod, User
+      hasMany: OrderLine
+
+  OrderLine:
+    order_id: id foreign:orders
+    product_id: id foreign:products
+    total_weight: integer nullable
+    quantity: integer
+    timestamps: true
+    relationships:
+      belongsTo: Order
+
+  Category:
+    name: string
+    description: string nullable
+    timestamps: true
+    relationships:
+      hasMany: SubCategory
+
+  SubCategory:
+    name: string
+    description: string nullable
+    category_id: id foreign:categories
+    timestamps: true
+    relationships:
+      belongsTo: Category
+      belongsToMany: Product
+
+  Product:
+    name: string
+    description: string nullable
+    weight: integer nullable
+    sub_category_id: id foreign:sub_categories
+    timestamps: true
+    relationships:
+      belongsToMany: SubCategory

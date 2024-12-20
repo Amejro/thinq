@@ -1,0 +1,36 @@
+created:
+    - database/factories/DeliveryMethodFactory.php
+    - database/factories/AddressFactory.php
+    - database/factories/BookingFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/OrderLineFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/SubCategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/migrations/2024_12_18_141919_create_delivery_methods_table.php
+    - database/migrations/2024_12_18_141920_create_addresses_table.php
+    - database/migrations/2024_12_18_141921_create_bookings_table.php
+    - database/migrations/2024_12_18_141922_create_orders_table.php
+    - database/migrations/2024_12_18_141923_create_order_lines_table.php
+    - database/migrations/2024_12_18_141924_create_categories_table.php
+    - database/migrations/2024_12_18_141925_create_sub_categories_table.php
+    - database/migrations/2024_12_18_141926_create_products_table.php
+    - database/migrations/2024_12_18_141927_create_product_sub_category_table.php
+    - app/Models/DeliveryMethod.php
+    - app/Models/Address.php
+    - app/Models/Booking.php
+    - app/Models/Order.php
+    - app/Models/OrderLine.php
+    - app/Models/Category.php
+    - app/Models/SubCategory.php
+    - app/Models/Product.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, remember_token: 'string nullable' }
+    DeliveryMethod: { name: string, description: 'string nullable', timestamps: timestamps, relationships: { hasMany: 'Booking, Order' } }
+    Address: { address: string, city: 'string nullable', state: 'string nullable', country: string, zip_code: 'string nullable', user_id: 'id foreign:users', timestamps: timestamps, relationships: { belongsTo: User } }
+    Booking: { booking_code: string, user_id: 'id foreign:users', delivery_method_id: 'id foreign:delivery_methods', status: 'enum:pending, complete, en_route', timestamps: timestamps, relationships: { belongsTo: 'DeliveryMethod, User' } }
+    Order: { order_code: string, user_id: 'id foreign:users', delivery_method_id: 'id foreign:delivery_methods', status: 'enum:pending, complete, en_route', payment_status: 'enum:unpaid, patial paid', timestamps: timestamps, relationships: { belongsTo: 'DeliveryMethod, User', hasMany: OrderLine } }
+    OrderLine: { order_id: 'id foreign:orders', product_id: 'id foreign:products', total_weight: 'integer nullable', quantity: integer, timestamps: timestamps, relationships: { belongsTo: Order } }
+    Category: { name: string, description: 'string nullable', timestamps: timestamps, relationships: { hasMany: SubCategory } }
+    SubCategory: { name: string, description: 'string nullable', category_id: 'id foreign:categories', timestamps: timestamps, relationships: { belongsTo: Category, belongsToMany: Product } }
+    Product: { name: string, description: 'string nullable', weight: 'integer nullable', sub_category_id: 'id foreign:sub_categories', timestamps: timestamps, relationships: { belongsToMany: SubCategory } }

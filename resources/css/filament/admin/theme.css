@@ -1,0 +1,15 @@
+@import "/vendor/filament/filament/resources/css/theme.css";
+
+@config 'tailwind.config.js';
+
+.fi-sidebar {
+    @apply bg-[#003C97] dark:bg-gray-950 !important;
+}
+
+.fi-sidebar-item-button {
+    @apply bg-transparent !important;
+}
+
+.fi-main{
+    @apply bg-[#ECF0F3] !important;
+}
