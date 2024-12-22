@@ -10,6 +10,14 @@
     @apply bg-transparent !important;
 }
 
-.fi-main{
+.fi-main {
     @apply bg-[#ECF0F3] !important;
+}
+
+.fi-ta-text {
+    @apply py-2 !important;
+}
+
+.fi-ta-image {
+    @apply py-2 !important;
 }

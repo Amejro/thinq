@@ -28,10 +28,20 @@
 
             </div>
             <div class='bg-white h-60 rounded-lg'>
+                @if ($data)
+                    <div class="p-4 bg-gray-100 border rounded">
+                        <h3 class="text-lg font-bold">Row Preview</h3>
+                        <p><strong>ID:</strong> {{ $data->id }}</p>
 
+                    </div>
+                @else
+                    <p>No row selected for preview.</p>
+                @endif
             </div>
 
         </div>
     </div>
+
+    <x-filament-actions::modals />
 
 </x-filament-panels::page>
