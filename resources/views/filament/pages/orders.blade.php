@@ -27,16 +27,51 @@
 
 
             </div>
-            <div class='bg-white h-60 rounded-lg'>
-                @if ($data)
-                    <div class="p-4 bg-gray-100 border rounded">
-                        <h3 class="text-lg font-bold">Row Preview</h3>
-                        <p><strong>ID:</strong> {{ $data->id }}</p>
+            <div class='bg-white  rounded-lg p-4 space-y-4'>
+                <!-- Header -->
+                <div class='flex justify-between items-center  '>
+                    <div class='flex  items-center space-x-3'>
+                        <div class=' flex items-center justify-center rounded-full bg-[#DDE8F0] size-8'>
+                            <x-phosphor-circle-dashed-bold class=' size-5 ' />
+
+                        </div>
+                        <div>#OR86356</div>
+                    </div>
+                    <div class=' flex items-center justify-center rounded-full bg-[#DDE8F0] size-8'>
+                        <x-ri-plane-fill class='size-5 ' />
+                    </div>
+                </div>
+
+                <!-- Body -->
+
+                <div>
+
+                </div>
+
+                <!-- Footer -->
+                <div class='flex justify-between items-center'>
+
+                    <div class='flex items-center space-x-2 font-light'>
+                        <div class='rounded-full bg-[#004581] size-10'></div>
+
+                        <div>
+                            <div class='text-xs'>Receiver</div>
+                            <div class='text-[#004581] text-sm capitalize'>Samuel Dadson</div>
+                        </div>
 
                     </div>
-                @else
-                    <p>No row selected for preview.</p>
-                @endif
+
+                    <div>
+                        <div class='text-xs'>Received</div>
+                        <div class='text-[#004581] text-sm capitalize'>Mar 05 2014 16:30</div>
+                    </div>
+
+                    <div>
+                        <div class='text-xs'>Destination</div>
+                        <div class='text-[#004581] text-sm capitalize'>Accra Ghana</div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
