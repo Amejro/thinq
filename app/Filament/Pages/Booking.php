@@ -16,25 +16,25 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 
-class Orders extends Page implements HasTable
+class Booking extends Page implements HasTable
 {
+
     use InteractsWithTable;
-    protected static ?string $navigationIcon = 'pepicon-pen-circle';
-    protected static ?int $navigationSort = 7;
-    protected static ?string $model = Order::class;
+    protected static ?string $navigationIcon = 'lucide-clipboard-pen-line';
 
-    // public $stats = [];
+    protected static ?int $navigationSort = 4;
 
-    protected static string $view = 'filament.pages.orders';
+    protected static string $view = 'filament.pages.booking';
+
 
     public $data = null;
+
 
 
 
     protected function getHeaderWidgets(): array
     {
         return [
-                // CustomOrdersOverview::class
             OrdersOverview::class
         ];
     }
@@ -104,9 +104,5 @@ class Orders extends Page implements HasTable
             ->defaultSort('created_at', 'desc')
         ;
     }
-
-
-
-
 
 }

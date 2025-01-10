@@ -7,27 +7,29 @@ use Filament\Pages\Page;
 use App\Events\RowPreview;
 use Filament\Tables\Table;
 use App\Livewire\OrdersOverview;
+use App\Livewire\TrackingOverview;
 use Filament\Tables\Actions\Action;
-use App\Livewire\CustomOrdersOverview;
 // use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\TextColumn;
+use App\Livewire\CustomOrdersOverview;
 // use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 
-class Orders extends Page implements HasTable
+class Tracking extends Page implements HasTable
 {
+
     use InteractsWithTable;
-    protected static ?string $navigationIcon = 'pepicon-pen-circle';
-    protected static ?int $navigationSort = 7;
-    protected static ?string $model = Order::class;
 
-    // public $stats = [];
+    protected static ?string $navigationIcon = 'hugeicons-location-update-02';
 
-    protected static string $view = 'filament.pages.orders';
+    protected static string $view = 'filament.pages.tracking';
+
+    protected static ?int $navigationSort = 3;
 
     public $data = null;
+
 
 
 
@@ -35,7 +37,7 @@ class Orders extends Page implements HasTable
     {
         return [
                 // CustomOrdersOverview::class
-            OrdersOverview::class
+            TrackingOverview::class
         ];
     }
 
@@ -104,9 +106,5 @@ class Orders extends Page implements HasTable
             ->defaultSort('created_at', 'desc')
         ;
     }
-
-
-
-
 
 }
